@@ -1,7 +1,10 @@
 package com.luxoft.springioc.lab2.model;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
+@Component
 public class UsualPerson implements Person {
     private int id;
 
@@ -13,7 +16,7 @@ public class UsualPerson implements Person {
     private float height;
     private boolean isProgrammer;
 
-    private List<String> contacts;
+    private List<Contact> contacts;
 
     public void setIsProgrammer(boolean isProgrammer) {
         this.isProgrammer = isProgrammer;
@@ -54,11 +57,11 @@ public class UsualPerson implements Person {
         isProgrammer = programmer;
     }
 
-    public List<String> getContacts() {
+    public List<Contact> getContacts() {
         return contacts;
     }
 
-    public void setContacts(List<String> contacts) {
+    public void setContacts(List<Contact> contacts) {
         this.contacts = contacts;
     }
 
@@ -78,8 +81,8 @@ public class UsualPerson implements Person {
                 + "Is Programmer?: " + isProgrammer + "\n";
         if ((contacts != null) && (!contacts.isEmpty())) {
             s += "Contacts: ";
-            for (String contact : contacts) {
-                s += contact + ", ";
+            for (Contact contact : contacts) {
+                s += contact.getAddress() + ", ";
             }
             s += "\n";
         }

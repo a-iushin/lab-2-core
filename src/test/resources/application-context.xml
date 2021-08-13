@@ -1,19 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
 
     <bean id="person" class="com.luxoft.springioc.lab2.model.UsualPerson">
         <property name="name" value="Ivan Ivanov"/>
         <property name="age" value="35"/>
-        <property name="country" ref="country"/>
+        <property name="height" value="1.78F"/>
+        <property name="isProgrammer" value="true"/>
+        <!--<property name="country" ref="country"/>-->
+        <property name="contacts">
+            <list>
+                <ref bean="contact"/>
+                <ref bean="contact1"/>
+            </list>
+        </property>
+
     </bean>
+
+    <bean id="expectedPerson" class="com.luxoft.springioc.lab2.model.UsualPerson"></bean>
 
     <bean id="country" class="com.luxoft.springioc.lab2.model.Country">
         <property name="id" value="1"/>
         <property name="name" value="Russia"/>
         <property name="codeName" value="RU"/>
+    </bean>
+
+    <bean id="contact" class="com.luxoft.springioc.lab2.model.Contact" factory-method="createInstance">
+        <constructor-arg value="asd@asd.ru"/>
+    </bean>
+    <bean id="contact1" class="com.luxoft.springioc.lab2.model.Contact" factory-method="createInstance">
+        <constructor-arg value="+7-234-456-67-89"/>
     </bean>
 </beans>
