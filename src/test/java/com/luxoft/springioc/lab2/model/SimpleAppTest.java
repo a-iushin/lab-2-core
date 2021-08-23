@@ -36,24 +36,24 @@ public class SimpleAppTest {
 	}
 
 	private UsualPerson getExpectedPerson() {
-		UsualPerson person = new UsualPerson();
-		person.setAge(35);
+		UsualPerson person = (UsualPerson) context.getBean("person");
+		/*person.setAge(35);
 		person.setHeight(1.78F);
 		person.setIsProgrammer(true);
-		person.setName("Ivan Ivanov");
+		person.setName("Ivan Ivanov");*/
 
-		Country country = new Country();
-		country.setId(1);
+		//Country country = (Country) context.getBean("country");
+		/*country.setId(1);
 		country.setName("Russia");
-		country.setCodeName("RU");
+		country.setCodeName("RU");*/
 
-		person.setCountry(country);
+		//person.setCountry(country);
 
-		List<String> contacts = new ArrayList<String>();
-		contacts.add("asd@asd.ru");
-		contacts.add("+7-234-456-67-89");
+		/*List<Contact> contacts = new ArrayList<>();
+		contacts.add((Contact) context.getBean("contact"));
+		contacts.add((Contact) context.getBean("contact1"));
 
-		person.setContacts(contacts);
+		person.setContacts(contacts);*/
 
 		return person;
 	}
